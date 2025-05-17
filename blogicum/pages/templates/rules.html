@@ -1,4 +1,6 @@
-<!-- <!DOCTYPE html>
+{% load static %}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -10,9 +12,9 @@
 	<header>
 		<h1>Блогикум</h1>
 		<nav>
-			<a href="{% url 'index' %}">Лента записей</a>
-			<a href="{% url 'about' %}">О проекте</a>
-			<a href="{% url 'rules' %}" class="active">Наши правила</a>
+			<a href="{% url 'blog:index' %}">Лента записей</a>
+			<a href="{% url 'pages:about' %}">О проекте</a>
+			<a href="{% url 'pages:rules' %}" class="active">Наши правила</a>
 		</nav>
 	</header>
 
@@ -25,4 +27,4 @@
 		<p>&copy;Блогикум</p>
 	</footer>
 </body>
-</html> -->
+</html>

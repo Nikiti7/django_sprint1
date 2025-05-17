@@ -10,9 +10,9 @@
 	<header>
       <h1>Блогикум</h1>
       <nav>
-				<a href="{% url 'index' %}" class="active">Лента записей</a>
-				<a href="#">О проекте</a>
-				<a href="#">Наши правила</a>
+			<a href="{% url 'blog:index' %}" class="active">Лента записей</a>
+			<a href="{% url 'pages:about' %}">О проекте</a>
+			<a href="{% url 'pages:rules' %}">Наши правила</a>
       </nav>
   </header>
 	<main class="container post">
@@ -22,10 +22,10 @@
 		<ul>
 				<li>Место: {{ post.location }}</li>
 				<li>Дата: {{ post.date }}</li>
-				<li>Категория: <a href="{% url 'category_posts' post.category %}">{{ post.category }}</a></li>
+				<li>Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.category }}</a></li>
 		</ul>
 		<p>{{ post.text|truncatechars:100 }}</p>
-		<a href="{% url 'post_detail' post.id %}">Читать полный текст</a>
+		<a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
 		<hr>
 		{% empty %}
 		<p>Нет записей.</p>
