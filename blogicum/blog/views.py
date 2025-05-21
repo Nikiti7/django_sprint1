@@ -50,7 +50,6 @@ def index(request):
     return render(request, 'blog/index.html', {'posts': sorted_posts})
 
 
-
 def post_detail(request, id):
     post = next((p for p in posts if p['id'] == id), None)
     return render(request, 'blog/detail.html', {'post': post})
