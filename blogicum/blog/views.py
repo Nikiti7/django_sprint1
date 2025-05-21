@@ -6,7 +6,7 @@ posts = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
-        'date': datetime(1659, 9, 30),
+        'date': '30 сентября 1659 года',
         'category': 'travel',
         'text': '''Наш корабль, застигнутый в открытом море
                 страшным штормом, потерпел крушение.
@@ -18,7 +18,7 @@ posts = [
     {
         'id': 1,
         'location': 'Остров отчаянья',
-        'date': datetime(1659, 10, 1),
+        'date': '1 октября 1659 года',
         'category': 'not-my-day',
         'text': '''Проснувшись поутру, я увидел, что наш корабль сняло
                 с мели приливом и пригнало гораздо ближе к берегу.
@@ -34,7 +34,7 @@ posts = [
     {
         'id': 2,
         'location': 'Остров отчаянья',
-        'date': datetime(1659, 10, 25),
+        'date': '25 октября 1659 года',
         'category': 'not-my-day',
         'text': '''Всю ночь и весь день шёл дождь и дул сильный
                 порывистый ветер. 25 октября.  Корабль за ночь разбило
@@ -46,8 +46,24 @@ posts = [
 ]
 
 
+MONTHS = {
+    'января': 1, 'февраля': 2, 'марта': 3, 'апреля': 4,
+    'мая': 5, 'июня': 6, 'июля': 7, 'августа': 8,
+    'сентября': 9, 'октября': 10, 'ноября': 11, 'декабря': 12
+}
+
+
+def parse_date_russian(date_str):
+    # Пример: '30 сентября 1659 года'
+    parts = date_str.replace('года', '').strip().split()
+    day = int(parts[0])
+    month = MONTHS[parts[1]]
+    year = int(parts[2])
+    return datetime(year, month, day)
+
+
 def index(request):
-    sorted_posts = sorted(posts, key=lambda post: post['date'], reverse=True)
+    sorted_posts = sorted(posts, key=lambda p: parse_date_russian(p['date']), reverse=True)
     return render(request, 'blog/index.html', {'posts': sorted_posts})
 
 
