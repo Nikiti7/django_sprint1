@@ -60,4 +60,3 @@ def category_posts(request, category_slug):
         'blog/category.html',
         {'category_slug': category_slug}
     )
-
