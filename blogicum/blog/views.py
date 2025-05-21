@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from datetime import datetime
 
 # Временный источник данных — список словарей с публикациями
 posts = [
     {
         'id': 0,
         'location': 'Остров отчаянья',
-        'date': '30 сентября 1659 года',
+        'date': datetime(1659, 9, 30),
         'category': 'travel',
         'text': '''Наш корабль, застигнутый в открытом море
                 страшным штормом, потерпел крушение.
@@ -17,7 +18,7 @@ posts = [
     {
         'id': 1,
         'location': 'Остров отчаянья',
-        'date': '1 октября 1659 года',
+        'date': datetime(1659, 10, 1),
         'category': 'not-my-day',
         'text': '''Проснувшись поутру, я увидел, что наш корабль сняло
                 с мели приливом и пригнало гораздо ближе к берегу.
@@ -33,7 +34,7 @@ posts = [
     {
         'id': 2,
         'location': 'Остров отчаянья',
-        'date': '25 октября 1659 года',
+        'date': datetime(1659, 10, 25),
         'category': 'not-my-day',
         'text': '''Всю ночь и весь день шёл дождь и дул сильный
                 порывистый ветер. 25 октября.  Корабль за ночь разбило
@@ -46,7 +47,7 @@ posts = [
 
 
 def index(request):
-    sorted_posts = sorted(posts, key=lambda p: p['date'], reverse=True)
+    sorted_posts = sorted(posts, key=lambda post: post['date'], reverse=True)
     return render(request, 'blog/index.html', {'posts': sorted_posts})
 
 
