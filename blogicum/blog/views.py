@@ -63,8 +63,16 @@ def parse_date_russian(date_str):
 
 
 def index(request):
-    sorted_posts = sorted(posts, key=lambda p: parse_date_russian(p['date']), reverse=True)
-    return render(request, 'blog/index.html', {'posts': sorted_posts})
+    sorted_posts = sorted(
+        posts,
+        key=lambda p: parse_date_russian(p['date']),
+        reverse=True
+    )
+    return render(
+        request,
+        'blog/index.html',
+        {'posts': sorted_posts}
+    )
 
 
 def post_detail(request, id):
