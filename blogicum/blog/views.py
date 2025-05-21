@@ -46,7 +46,9 @@ posts = [
 
 
 def index(request):
-    return render(request, 'blog/index.html', {'posts': posts})
+    sorted_posts = sorted(posts, key=lambda p: p['date'], reverse=True)
+    return render(request, 'blog/index.html', {'posts': sorted_posts})
+
 
 
 def post_detail(request, id):
